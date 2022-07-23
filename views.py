@@ -121,7 +121,7 @@ class Views:
 
     def listsposts(self, requestparams):
         self.runeverytime(requestparams)
-        tmpl = filehelper("./templates/faq.html").open().readtext().close()
+        tmpl = filehelper("./templates/mainpage.html").open().readtext().close()
         self.templatevars.update({
             'pagetitle': 'Main'
         })
