@@ -17,7 +17,7 @@ class TestMicroWebTemplate(unittest.TestCase):
         self.assertTrue(mWebTmpl.Execute(tmpl, templatevars) == "<div class=aaa>bbb</div>")
 
     def test_include(self):
-        vars = {'pagetitle':"it is a test", 'breadcrumbs':{'lol':'klont', 'lel':'ladida'}}
+        vars = {'pagetitle':"it is a test"}
         tmpl = "<div>{{ include partials/navigation_partial.html }}</div>"
         mWebTmpl = MicroWebTemplate(filepath='./simulator_version/')
         transformed = mWebTmpl.Execute(tmpl, vars)
