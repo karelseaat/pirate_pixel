@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+
+
+{{ include partials/head_partial.html }}
+
+<body>
+
+{{ include partials/navigation_partial.html }}
+
+  <div class="container">
+    <div class="row">
+      We gaan hier bezig met connect, terwijl je deze pagina bekijkt is de device bezit om te verbinden aan het ap dat je geselecteerd hebt.
+      Als je ook op dit ap verbind mag je daarna bezig om de device pagina opnieuw te zoeken gezien de device nu op een ander ip address zit, dus veel geluk daarmee.
+      Maar he het device zit in iedergeval op internet !
+    </div>
+    <div class="row">
+
+    <button class='wifibuts' onclick="resetajax(/resetdeviceconnect/{{ apname }}')">[[ connect device to ap ]]</button>
+    <button class='wifibuts' onclick="window.location.href='/config/veriviedap'">[[ cancel ]]</button>
+    </div>
+  </div>
+
+{{ include partials/footer_partial.html }}
+
+</body>
+
+</html>

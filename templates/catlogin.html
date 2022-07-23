@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+{{ include partials/head_partial.html }}
+
+<body>
+  {{ include partials/navigation_partial.html }}
+
+<div class="container">
+  <h2 class="title">{{ pagetitle }}</h2>
+  <form action="/connect/catlogin" method="post">
+
+    <div><label>[[ Username ]]:</label> <input value="" class="input" type="text" name="username"></div>
+    {{ if postresults }}
+      <label class="error">{{ postresults[username] }}</label>
+    {{ end }}
+    <div><label>[[ Password ]]:</label> <input class="input" type="password" name="password"></div>
+    {{ if postresults }}
+      <label class="error">{{ postresults[password] }}</label>
+    {{ end }}
+    <input type="hidden" name="username_validator" value="required|biggerthen=6">
+    <input type="hidden" name="password_validator" value="required|biggerthen=3">
+
+    <input type="submit" value="Register">
+  </form>
+</div>
+
+
+  {{ include partials/footer_partial.html }}
+</body>
+
+</html>

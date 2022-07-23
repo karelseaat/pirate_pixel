@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+{{ include partials/head_partial.html }}
+
+<body>
+  {{ include partials/navigation_partial.html }}
+
+  <div class="container">
+    <h2 class="title">{{ pagetitle }}</h2>
+    <form action="/connect/apiauth" method="post">
+
+      <div><label>[[ Password ]]:</label> <input class="input" type="password" name="APIAUTHASSWORD"></div>
+      {{ if postresults }}
+        <label class="error">{{ postresults[APIAUTHASSWORD] }}</label>
+      {{ end }}
+      <input type="hidden" name="APIAUTHASSWORD_validator" value="required|biggerthen=3">
+
+      <input type="submit" value="Register">
+    </form>
+  </div>
+
+  {{ include partials/footer_partial.html }}
+</body>
+
+</html>

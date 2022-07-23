@@ -1,0 +1,219 @@
+label {
+  display: inline-block;
+  width: 150px;
+}
+
+.wifiscont0 {
+  position:relative;
+  padding: 10px 0px;
+}
+
+#chatarea {
+  height: 500px;
+    width: 500px;
+    background-color: aliceblue;
+    overflow-y: scroll;
+}
+
+.wifiscont1 {
+  position:relative;
+  padding: 10px 0px;
+  background-color: lightgrey;
+}
+
+.faq {
+  text-align: left;
+  margin: 0px;
+  display:none;
+}
+
+.legenda {
+  text-align: left;
+}
+
+.legandasvg 
+{
+  height: 20px;
+}
+
+.wifibuts {
+    margin: 0px 10px;
+}
+
+.wifiimgs {
+  position: absolute;
+  height: 20px;
+  left: 140px;
+}
+
+.wifiimgstested {
+  position: absolute;
+  height: 20px;
+  left: 110px;
+}
+
+.wifilabel {
+    width: 160px;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.error {
+  color: red;
+  width: 500px;
+}
+
+
+.btn-sm {
+  border-radius: 10px;
+  padding: 10px 14px 11px
+}
+
+.leftalign {
+  text-align: left;
+}
+
+#snackbar {
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: #333; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 150px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 150px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 150px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 150px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 150px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+.msgred {
+  background: #faa;
+  border-left: 5px solid #d95;
+  padding: 1.5em
+}
+
+.msggreen {
+  background: #afa;
+  border-left: 5px solid #9d5;
+  padding: 1.5em
+}
+
+pre {
+  background-color: #ddd;
+}
+
+/* for the language selector ! */
+
+.dropbtn {
+  background-color: #888;
+  /* color: white; */
+  /* padding: 16px; */
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.clickshow {
+cursor: pointer;
+background-color: #ddd;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #ddd;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  top: -5px;
+  left: 105%;
+  font-size: 15px;
+
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

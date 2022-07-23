@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+
+
+{{ include partials/head_partial.html }}
+
+<body>
+
+{{ include partials/navigation_partial.html }}
+
+  <div class="container">
+    <div class="row">
+
+
+      <div class="col c4">
+        {{ if connectionconfigs['API'] == 'on' }}
+          <a href="/connect/apidoc" class="btn btn-sm btn-a">
+        {{ else }}
+          <a href="" class="btn btn-sm btn-x">
+        {{ end }}
+          <img class="klont" src="/getimage/bell.svg" alt="API">
+          <p>[[ API ]]</p>
+        </a>
+      </div>
+      <div class="col c4">
+
+      </div>
+      <div class="col c4">
+        {{ if connectionconfigs['ConnectAThing'] == 'on' }}
+          <a href="/connect/connectathing" class="btn btn-sm btn-b">
+        {{ else }}
+          <a href="" class="btn btn-sm btn-x">
+        {{ end }}
+          <img class="klont" src="/getimage/settings.svg" alt="ConnectAThing">
+          <p>[[ Connect A Thing ]]</p>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col c4">
+
+      </div>
+      <div class="col c4">
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col c4">
+
+        {{ if connectionconfigs['AdaFruit'] == 'on' }}
+          <a href="/connect/adafruitmqtt" class="btn btn-sm btn-c">
+        {{ else }}
+          <a href="" class="btn btn-sm btn-x">
+        {{ end }}
+          <img class="klont" src="/getimage/file-text.svg" alt="AdaFruit">
+          <p>[[ Ada Fruit ]]</p>
+        </a>
+      </div>
+      <div class="col c4">
+
+      </div>
+      <div class="col c4">
+
+        {{ if connectionconfigs['CustomMqtt'] == 'on' }}
+          <a href="/connect/custommqtt" class="btn btn-sm btn-d">
+        {{ else }}
+          <a href="" class="btn btn-sm btn-x">
+        {{ end }}
+          <img class="klont" src="/getimage/share-2.svg" alt="Custom Mqtt">
+          <p>[[ Custom Mqtt ]]</p>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+
+{{ include partials/footer_partial.html }}
+
+</body>
+
+</html>

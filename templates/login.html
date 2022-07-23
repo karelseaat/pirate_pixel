@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+{{ include partials/head_partial.html }}
+
+<body>
+  {{ include partials/navigation_partial.html }}
+  <div class="container">
+    <h2 class="title">{{ pagetitle }}</h2>
+    <form action="/loginpage" method="post">
+      <div><label>[[ password ]]:</label> <input class="input" type="password" name="password" ></div>
+      {{ if postresults }}
+        <label class="error">{{ postresults[password] }}</label>
+      {{ end }}
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  {{ include partials/footer_partial.html }}
+</body>
+
+</html>

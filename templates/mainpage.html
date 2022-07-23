@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+{{ include partials/head_partial.html }}
+<body>
+{{ include partials/navigation_partial.html }}
+  <div class="container">
+    <div class="row">
+      <div class="col c4">
+        <a href="/config" class="btn btn-sm btn-a tooltip"><img class="klont" src="/getimage/bell.svg" alt="configuration">
+          <span class="tooltiptext">Tooltip text</span>
+          <p>[[ Config ]]</p>
+        </a>
+      </div>
+      <div class="col c4">
+      </div>
+      <div class="col c4">
+        {{ if connectionstatus['internet'] == True }}
+        <a href="/manuals" class="btn btn-sm btn-b tooltip">
+        {{ else }}
+        <a href="" class="btn btn-sm btn-x tooltip">
+        {{ end }}
+          <img class="klont" src="/getimage/settings.svg" alt="manuals">
+          <span class="tooltiptext">Tooltip text</span>
+          <p>[[ Manuals ]]</p>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col c4">
+      </div>
+      <div class="col c4">
+      </div>
+      <div class="col c4">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col c4">
+        <a href="/connect" class="btn btn-sm btn-c tooltip">
+          <img class="klont" src="/getimage/file-text.svg" alt="Connect">
+          <span class="tooltiptext">Tooltip text</span>
+          <p>[[ Connect ]]</p>
+        </a>
+      </div>
+      <div class="col c4">
+      </div>
+      <div class="col c4">
+        <a href="/helpmain" class="btn btn-sm btn-d tooltip">
+          <img class="klont" src="/getimage/share-2.svg" alt="API">
+          <span class="tooltiptext">Tooltip text</span>
+          <p>[[ Help ]]</p>
+        </a>
+      </div>
+    </div>
+  </div>
+{{ include partials/footer_partial.html }}
+</body>
+</html>

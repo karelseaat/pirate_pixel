@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+{{ include partials/head_partial.html }}
+
+<body>
+  {{ include partials/navigation_partial.html }}
+  <div class="container">
+    <h2 class="title">{{ pagetitle }}</h2>
+    <p class="legenda">
+    Dit moet en lijst worden met de wifi namen en de indicaties of er me te verbonden viel en of dat deze op dit moment in berijk zijn.
+    Er moet een knop naast ieder item staan om met dit ap te verbinden maar alleen als je ermee kunt verbinden.
+    Als je op die knop drukt dan krijg je een melding dat dit betekent dat je zlf geen directe verbinding hebt met dit device en dat het device een ander ip krijgt.
+    Je zult het device moeteen opzoeken in het netwerk, tenzij je het device al het verbonden aan de external services, in dat geval kun je het ip via daar opvragen of er zelfs meteen me verbinden.
+    </p>
+  </br>
+
+    <p class="legenda">
+      Legenda:
+    </p>
+  </br>
+    <p class="legenda">
+    Wifi power:
+    </p>
+
+      <p class="legenda"><img class="legandasvg" src="/getimage/wifi.svg" alt=""> Wifi in range !</p>
+      <p class="legenda"><img class="legandasvg" src="/getimage/wifi-off.svg" alt=""> Wifi out of range !</p>
+  </br>
+    <p class="legenda">
+    Wifi Access:
+    </p>
+
+    <p class="legenda"><img class="legandasvg" src="/getimage/circle.svg" alt="phone home">Accespoint untested</p>
+    <p class="legenda"><img class="legandasvg" src="/getimage/check-circle.svg" alt="phone home">Accespoint succesfully tested</p>
+    <p class="legenda"><img class="legandasvg" src="/getimage/x-circle.svg" alt="phone home">Accespoint failed test</p>
+  </br>
+    {{ if accesspoints}}
+
+    {{ for val in accesspoints }}
+    <div class='wifiscont{{ val[oddeven] }}'>
+      <label class='wifilabel'>{{ val[WIFISSID] }}</label>
+
+      <img class="wifiimgs"  {{ if val['inrange'] == True }} src="/getimage/wifi.svg" {{ else }} src="/getimage/wifi-off.svg" {{ end }} alt="">
+
+      {{ if val['TESTCONNECT'] == 2 }}
+        <img class="wifiimgstested" src="/getimage/check-circle.svg" alt="phone home">
+      {{ elif val['TESTCONNECT'] == 1 }}
+        <img class="wifiimgstested" src="/getimage/x-circle.svg" alt="phone home">
+      {{ else }}
+        <img class="wifiimgstested" src="/getimage/circle.svg" alt="phone home">
+      {{ end }}
+
+      <button class='wifibuts' onclick="window.location.href='/config/removeveriviedap/{{ val[WIFISSID] }}'">[[ remove ]]</button>
+      <button class='wifibuts' onclick="window.location.href='/config/apset/{{ val[WIFISSID] }}'">[[ edit ]]</button>
+
+      {{ if val['allready'] == True }}
+        <button onclick="window.location.href='/config/apconnect/{{ val[WIFISSID] }}'" class='wifibuts'>[[ Use ]]</button>
+      {{ else }}
+        <button disabled class='wifibuts'>[[ Use ]]</button>
+      {{ end }}
+
+      <!-- {{ if val['inrange'] == True }}
+        <button onclick="window.location.href='/aptest/{{ val[WIFISSID] }}'" class='wifibuts'>[[ test ]]</button>
+      {{ else }}
+        <button disabled class='wifibuts'>[[ test ]]</button>
+      {{ end }} -->
+    </div>
+    {{ end }}
+    <button onclick="window.location.href='/config/aptest'" class='wifibuts'>[[ test all aps ]]</button>
+    {{ else }}
+    <p> There are no accespoints saved  </p>
+    {{ end }}
+
+
+  </div>
+  {{ include partials/footer_partial.html }}
+</body>
+
+</html>

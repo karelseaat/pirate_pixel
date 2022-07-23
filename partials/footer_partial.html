@@ -1,0 +1,49 @@
+{{ if snackmesg }}
+<div class="{{ snackclass }}" id="snackbar">{{ snackmesg }}</div>
+{{ end }}
+
+<div class="footer" class="container">
+{{ if authenticated }}
+<div class="col c2"><p> &nbsp;</p></div>
+
+  <div class="col c2">
+    <h3 class="leftalign">[[ Connection Status ]]</h3>
+    {{ if connectionstatus['mode'] == 5 }}
+      <p class="leftalign">[[ Connection mode ]]: WIFI</p>
+    {{ else }}
+      <p class="leftalign">[[ Connection mode ]]: AP</p>
+    {{ end }}
+    <p class="leftalign">[[ Connected to ]]: {{ connected_to }}</p>
+    <p class="leftalign">[[ Connected to the internet ]]: {{ connectionstatus[internet] }}</p>
+  </div>
+
+  <div class="col c2">
+    <h3 class="leftalign">[[ Config status ]]</h3>
+    <p class="leftalign"> [[ ConnectAthing ]]: {{ CONNS[ConnectAThing] }} </p>
+    <p class="leftalign"> [[ AdaFruit ]]: {{ CONNS[AdaFruit] }} </p>
+    <p class="leftalign"> [[ API ]]: {{ CONNS[API] }} </p>
+    <p class="leftalign"> [[ Custom MQTT ]]: {{ CONNS[CustomMqtt] }} </p>
+  </div>
+
+
+
+  <div class="col c2">
+    <h3 class="leftalign">[[ Versions ]]</h3>
+    <p class="leftalign">[[ New hardware version ]]: {{ newhardware }}</p>
+    <p class="leftalign">[[ New software version ]]: {{ newsoftware }}</p>
+  </div>
+
+{{ end }}
+
+</div>
+
+<script>
+  document.getElementsByTagName("body")[0].onload = function() {
+    showWhenError();
+    focusfirstinput();
+    langdropdown();
+    addpostheaders();
+    getaddheaders();
+    showfaqclick();
+  };
+</script>

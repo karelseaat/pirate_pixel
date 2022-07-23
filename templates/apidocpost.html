@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+
+{{ include partials/head_partial.html }}
+
+<body>
+
+{{ include partials/navigation_partial.html }}
+
+  <div class="container">
+    <h2 class="title">{{ pagetitle }}</h2>
+    <div class="row">
+
+      <div class="col c4">
+
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col c4">
+
+      </div>
+      <div class="col c4">
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col c4">
+      </div>
+      <div class="col c4">
+        <form method="POST" id="ajaxpost" action="./connect/apiscreenpost" authentication="Basic dGVzdDprbG9udA==">
+          <input name="screentext" placeholder="Text to screen">
+          {{ if postresults }}
+            <label class="error">{{ postresults[screentext] }}</label>
+          {{ end }}
+
+          <input type="hidden" name="screentext_validator" value="required|biggerthen=1">
+          <br>
+          <input type="submit" value="Send it!">
+        </form>
+      </div>
+      <div class="col c4">
+      </div>
+    </div>
+    <div class="row">
+      <p class="leftalign ">
+[[ Do this with curl ]]:
+<pre>
+curl --request POST
+  --url http://{{ ipaddress }}:{{ port }}/connect/apidocpost
+  --header 'content-type: application/json'
+  --data '{"name": "lelzor"}'
+</pre>
+
+[[ Do this with javascript ]]:
+<pre>
+  fetch("http://{{ ipaddress }}:{{ port }}/connect/apidocpost", {
+    "method": "POST",
+    "headers": {
+      "content-type": "application/json"
+    },
+    "body": {
+      "name": "lelzor"
+    }
+  })
+  .then(response => {
+    console.log(response);
+  })
+  .catch(err => {
+    console.error(err);
+  });
+</pre>
+
+[[ Do this with python ]]:
+<pre>
+  import requests
+
+  url = "http://{{ ipaddress }}:{{ port }}/connect/apidocpost"
+
+  payload = "{\"name\": \"lelzor\"}"
+  headers = {
+      'content-type': "application/json"
+      }
+
+  response = requests.request("POST", url, data=payload, headers=headers)
+
+  print(response.text)
+</pre>
+</p>
+<br><br><br><br><br><br><br><br><br>
+    </div>
+
+  </div>
+
+{{ include partials/footer_partial.html }}
+
+</body>
+</html>
