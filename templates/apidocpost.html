@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+{{ include partials/head_partial.html }}
+
+<body>
+
+{{ include partials/navigation_partial.html }}
+
+  <div class="container">
+    <h2 class="title">{{ pagetitle }}</h2>
+    <div class="row">
+
+      <div class="col c4">
+
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col c4">
+
+      </div>
+      <div class="col c4">
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col c4">
+      </div>
+      <div class="col c4">
+        <form method="POST" id="ajaxpost" action="./postpost">
+          <input name="title" placeholder="Title">
+          <textarea name="message" placeholder="Message"></textarea>
+          {{ if postresults }}
+            <label class="error">{{ postresults[screentext] }}</label>
+          {{ end }}
+
+          <input type="hidden" name="title_validator" value="required|biggerthen=1">
+          <input type="hidden" name="message_validator" value="required|biggerthen=1">
+          <br>
+          <input type="submit" value="Send it!">
+        </form>
+      </div>
+      <div class="col c4">
+      </div>
+    </div>
+    <div class="row">
+      <p class="leftalign ">
+
+
+</p>
+
+    </div>
+
+  </div>
+
+{{ include partials/footer_partial.html }}
+
+</body>
+</html>

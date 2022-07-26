@@ -24,8 +24,8 @@ class Views:
         # self.mWebTmpl.SetInternationaliser(MicroNationalization("nederlands.json", "[[", "]]"))
 
         self.tempconfig = filehelper("./config.json").open().readdict()
-        if self.tempconfig.content['TESTAPS']:
-            self.update_ap_statusus()
+        # if self.tempconfig.content['TESTAPS']:
+        #     self.update_ap_statusus()
 
         self.connection.set_config(self)
         # self.connection.connect_avalable()
@@ -121,19 +121,35 @@ class Views:
 
     def listsposts(self, requestparams):
         self.runeverytime(requestparams)
-        tmpl = filehelper("./templates/mainpage.html").open().readtext().close()
+        tmpl = filehelper("./templates/faq.html").open().readtext().close()
+        self.templatevars.update({"lol": self.tempconfig.content['POSTS']})
         self.templatevars.update({
             'pagetitle': 'Main'
         })
         return {}, self.mWebTmpl.Execute(tmpl, self.templatevars), 200
 
+    def showpost(self, requestparams):
+        self.runeverytime(requestparams)
+        idtoshow = int(requestparams['GET'].split(' ')[0].split('/')[-1])
+        tmpl = filehelper("./templates/onepost.html").open().readtext().close()
+
+        self.templatevars.update({"lol": self.tempconfig.content['POSTS'][idtoshow-1]})
+        return {}, self.mWebTmpl.Execute(tmpl, self.templatevars), 200
+
     def makepost(self, requestparams):
                 self.runeverytime(requestparams)
-                tmpl = filehelper("./templates/faq.html").open().readtext().close()
+                tmpl = filehelper("./templates/apidocpost.html").open().readtext().close()
                 self.templatevars.update({
                     'pagetitle': 'Main'
                 })
                 return {}, self.mWebTmpl.Execute(tmpl, self.templatevars), 200
 
     def postit(self, requestparams):
+
+        vali = validator()
+        vali.handleform(requestparams['POSTVALS'])
+
+        if vali.error_free():
+            self.tempconfig.addtodictlist(vali.get_values(), "POSTS")
+
         return  {'Location': '/listposts'}, '', 303

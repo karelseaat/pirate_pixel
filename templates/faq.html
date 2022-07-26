@@ -9,23 +9,13 @@
   {{ include partials/navigation_partial.html }}
 
   <div class="container">
-    <div class="row">
-      <div>
-        <h2 class="clickshow">Dit is een test</h2>
 
-        <p class='faq'>
-          Texts voor de uitleg !
-        </p>
-      </div>
-    </div>
-    <div class="row">
-      <h2 class="clickshow">Dit is ook een test</h2>
-    </div>
-    <div class="row">
-      <h2 class="clickshow">Laatste test !</h2>
 
+    {{ for something in lol }}
+    <div class="row">
+        <p >{{ something[title] }}</p>
     </div>
-
+    {{ end }}
   </div>
 
 

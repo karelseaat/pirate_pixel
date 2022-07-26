@@ -6,6 +6,12 @@ name = "pypi"
 [packages]
 requests = "*"
 pygame = "*"
+htmlmin = "*"
+microbuild = "*"
+pycodestyle = "*"
+termcolor = "*"
+pdoc = "*"
+bs4 = "*"
 
 [dev-packages]
 

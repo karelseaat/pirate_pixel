@@ -12,13 +12,16 @@ class filehelper(object):
     """
     this class will help open and write files for text, binary and config/json
     """
-    afile = None
-    filename = ""
-    content = ""
-    path = './'
-    dirty = False
+
 
     def __init__(self, filename=None):
+
+        self.afile = None
+        # self.filename = ""
+        self.content = ""
+        self.path = './'
+        self.dirty = False
+
         if not filename:
             self.filename = None
             return

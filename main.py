@@ -49,6 +49,7 @@ klont.addHandler(r"\/getjs\/.*\.js$", "get", view.getjs)
 # pirate pages
 
 klont.addHandler(r"\/listposts$", "get", view.listsposts)
+klont.addHandler(r"\/showpost\/.*$", "get", view.showpost)
 klont.addHandler(r"\/makepost$", "get", view.makepost)
 klont.addHandler(r"\/postpost$", "post", view.postit)
 
