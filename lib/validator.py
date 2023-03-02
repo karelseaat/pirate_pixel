@@ -1,8 +1,4 @@
 
-# ENABLEONBUILD 1
-#import ure as re
-
-# DISABLEONBUILD 1
 import re
 
 

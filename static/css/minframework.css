@@ -19,7 +19,7 @@ body, textarea, input, select {
   text-decoration: none
 }
 
-.container {
+.ineriner {
   margin: 0 20px;
   width: auto
 }
@@ -29,6 +29,13 @@ body, textarea, input, select {
     margin: auto;
     width: 1270px
   }
+}
+
+.centercontainer {
+  margin: auto;
+  width: 1270px;
+
+  text-align: center;
 }
 
 .btn, h2 {

@@ -10,12 +10,19 @@
 
   <div class="container">
 
-
-    {{ for something in lol }}
-    <div class="row">
-        <p >{{ something[title] }}</p>
-    </div>
+    <table>
+      <tr>
+        <th>post</th>
+        <th>content</th>
+      </tr>
+    {{ for index,something in lol }}
+    <tr>
+        <td><a href="showpost/{{ index }}">{{ something[title] }}</a></td>
+        <td>{{ something[story] }}</td>
+    </tr>
     {{ end }}
+
+    </table>
   </div>
 
 

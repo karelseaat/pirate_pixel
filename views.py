@@ -21,17 +21,22 @@ class Views:
         self.websettings = websettings
         self.templatevars = {}
         self.mWebTmpl = MicroWebTemplate()
-        # self.mWebTmpl.SetInternationaliser(MicroNationalization("nederlands.json", "[[", "]]"))
+
 
         self.tempconfig = filehelper("./config.json").open().readdict()
-        # if self.tempconfig.content['TESTAPS']:
-        #     self.update_ap_statusus()
-
         self.connection.set_config(self)
-        # self.connection.connect_avalable()
+
 
     def splitparams(self, params):
         return self.websettings.urlparse(params["GET"].split(" ")[0])[1]
+
+    def limit_story(self, thelist):
+
+        for item in thelist:
+            if item['story']:
+                item['story'] = item['story'][:30]
+
+        return thelist
 
     def runeverytime(self, requestparams):
         self.templatevars = {}
@@ -48,7 +53,7 @@ class Views:
 
         self.templatevars.update({
 
-            'pagetitle': 'Unknown',
+            'pagetitle': 'Pirate Pixy',
             'backendloggedin': self.connection.backend_loggedin()
         })
 
@@ -60,9 +65,7 @@ class Views:
         else:
             self.imediateredirect = None
 
-
         self.templatevars.update({'dirty': self.tempconfig.is_dirty()})
-
 
         self.templatevars.update({
             'authenticated': self.websettings.isauthenticated(),
@@ -75,7 +78,6 @@ class Views:
 
             }
         })
-
 
         self.templatevars['CONNS'] = self.tempconfig.content['CONNS']
 
@@ -122,18 +124,22 @@ class Views:
     def listsposts(self, requestparams):
         self.runeverytime(requestparams)
         tmpl = filehelper("./templates/faq.html").open().readtext().close()
+
+
         self.templatevars.update({"lol": self.tempconfig.content['POSTS']})
         self.templatevars.update({
             'pagetitle': 'Main'
         })
+
         return {}, self.mWebTmpl.Execute(tmpl, self.templatevars), 200
 
     def showpost(self, requestparams):
         self.runeverytime(requestparams)
         idtoshow = int(requestparams['GET'].split(' ')[0].split('/')[-1])
+
         tmpl = filehelper("./templates/onepost.html").open().readtext().close()
 
-        self.templatevars.update({"lol": self.tempconfig.content['POSTS'][idtoshow-1]})
+        self.templatevars.update({"lol": self.tempconfig.content['POSTS'][idtoshow]})
         return {}, self.mWebTmpl.Execute(tmpl, self.templatevars), 200
 
     def makepost(self, requestparams):

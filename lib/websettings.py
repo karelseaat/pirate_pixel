@@ -3,12 +3,6 @@ import sys
 import time
 from os import urandom as rnd
 
-# ENABLEONBUILD 3
-# import ure as re
-# import ujson as json
-# import usocket as socket
-
-# DISABLEONBUILD 6
 import re
 import json
 import socket

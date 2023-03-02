@@ -1,10 +1,4 @@
 
-
-# ENABLEONBUILD 2
-# import utime as time
-# import network
-
-# DISABLEONBUILD 2
 import time
 from lib.network import WLAN
 

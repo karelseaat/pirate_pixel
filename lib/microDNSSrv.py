@@ -1,8 +1,4 @@
-# ENABLEONBUILD 2
-# from ure import match
-# import usocket as socket
 
-# DISABLEONBUILD 2
 import socket
 from re import match
 

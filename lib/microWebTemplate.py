@@ -343,7 +343,7 @@ class MicroWebTemplate:
                             if newTokenToProcess != 'end':
                                 break
                     elif len(identifier) == 2:
-                        for x, y in result.items():
+                        for x, y in enumerate(result):
                             self._pyLocalVars[identifier[0]] = x
                             self._pyLocalVars[identifier[1]] = y
                             self._pos = beforePos
