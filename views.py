@@ -1,8 +1,10 @@
 from lib.filehelper import filehelper
 from lib.microWebTemplate import MicroWebTemplate
 from lib.validator import validator
-# from lib.micronationalization import MicroNationalization
+
 import time
+
+from lib.tinydb import TinyDB, Query
 
 dictfilt = lambda x, y: dict([ (i,x[i]) for i in x if i in set(y) ])
 
@@ -25,6 +27,11 @@ class Views:
 
         self.tempconfig = filehelper("./config.json").open().readdict()
         self.connection.set_config(self)
+
+        self.db = TinyDB('./db2.json')
+        self.settingstable = self.db.table('settings')
+        self.contenttable = self.db.table('content')
+
 
 
     def splitparams(self, params):
@@ -125,8 +132,8 @@ class Views:
         self.runeverytime(requestparams)
         tmpl = filehelper("./templates/faq.html").open().readtext().close()
 
+        self.templatevars.update({"lol": self.contenttable.all()})
 
-        self.templatevars.update({"lol": self.tempconfig.content['POSTS']})
         self.templatevars.update({
             'pagetitle': 'Main'
         })
@@ -156,6 +163,6 @@ class Views:
         vali.handleform(requestparams['POSTVALS'])
 
         if vali.error_free():
-            self.tempconfig.addtodictlist(vali.get_values(), "POSTS")
+            self.contenttable.insert(vali.get_values())
 
         return  {'Location': '/listposts'}, '', 303

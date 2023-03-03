@@ -30,13 +30,13 @@
       <div class="col c4">
         <form method="POST" id="ajaxpost" action="./postpost">
           <input name="title" placeholder="Title">
-          <textarea name="message" placeholder="Message"></textarea>
+          <textarea name="story" placeholder="Message"></textarea>
           {{ if postresults }}
             <label class="error">{{ postresults[screentext] }}</label>
           {{ end }}
 
           <input type="hidden" name="title_validator" value="required|biggerthen=1">
-          <input type="hidden" name="message_validator" value="required|biggerthen=1">
+          <input type="hidden" name="story_validator" value="required|biggerthen=1">
           <br>
           <input type="submit" value="Send it!">
         </form>
